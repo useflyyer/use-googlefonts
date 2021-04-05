@@ -1,6 +1,6 @@
 {
   "name": "@flayyer/use-googlefonts",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "React hook to dynamically load Google Fonts v2 during execution.",
   "keywords": [
     "flayyer",
