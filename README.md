@@ -72,3 +72,9 @@ To improve performance and speed it is recommended to add the following pre-conn
   </body>
 </html>
 ```
+
+---
+
+## References
+
+* [adriano-tirloni/google-fonts-css2](https://github.com/adriano-tirloni/google-fonts-css2)
