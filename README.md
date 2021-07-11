@@ -1,24 +1,24 @@
-# @flayyer/use-googlefonts
+# @flyyer/use-googlefonts
 
 React hook to load Google Fonts v2 **when you can't define _a priori_ the expected font on the `<head />`.**
 
 If you know what specific font you require on your project you should omit this library and insert the `<link />` tags directly in the `<head />` of your HTML via `react-helmet` or `next/head` if you are using Next.js.
 
-We made this hook for [Flayyer.com](https://flayyer.com?ref=github) to enable developers to create templates with fonts _on the fly_ to match each user preferred font styling. Those tempates are used to create social and marketing images.
+We made this hook for [Flyyer.io](https://flyyer.io?ref=github) to enable developers to create templates with fonts _on the fly_ to match each user preferred font styling. Those tempates are used to create social and marketing images.
 
 ## Usage
 
 Install this dependency:
 
 ```sh
-yarn add @flayyer/use-googlefonts
+yarn add @flyyer/use-googlefonts
 ```
 
 Common case usage:
 
 ```tsx
 import React from "react";
-import { useGoogleFonts, GoogleFontsStatus } from "@flayyer/use-googlefonts";
+import { useGoogleFonts, GoogleFontsStatus } from "@flyyer/use-googlefonts";
 
 function App() {
   const font = useGoogleFonts([
