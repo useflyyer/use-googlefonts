@@ -48,18 +48,25 @@ function App() {
 
   if (font.status === GoogleFontsStatus.FAILED) {
     console.log(font.error);
+  } else {
+    console.log(font.href);
+    // https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,444;0,500;0,600..700;1,100..200;1,300;1,400;1,600..700&family=Roboto:ital,wght@0,100;0,400;0,500;1,300;1,400&display=auto
   }
-  console.log(font.href);
-  // https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,444;0,500;0,600..700;1,100..200;1,300;1,400;1,600..700&family=Roboto:ital,wght@0,100;0,400;0,500;1,300;1,400&display=auto
+
   return (
-    <p style={{ fontFamily: "'Cabin', sans-serif" }}>
-      Almost before we knew it, we had left the ground.
-    </p>
+    // Use .flyyer-wait class to prevent premature renders while the font is still loading.
+    <div className={googleFont.status === GoogleFontsStatus.LOADING && "flyyer-wait"}>
+      <p style={{ fontFamily: "'Cabin', sans-serif" }}>
+        Almost before we knew it, we had left the ground.
+      </p>
+    </div>
   );
 }
 ```
 
 To improve performance and speed it is recommended to add the following pre-connection tags in the `<head />` of your HTML.
+
+**This is done automatically if you are using [@flyyer/cli](https://github.com/useflyyer/flyyer-cli) so skip this section if you created your deck with [create-flyyer-app](https://github.com/useflyyer/create-flyyer-app)**
 
 ```html
 <html>
