@@ -71,13 +71,13 @@ export interface UseGoogleFontsResult {
  * Get the operation status (and `error` if present) via the `status` attribute of the returned object.
  */
 export function useGoogleFonts(
-  fonts: GoogleFontFamily[] = [],
+  fonts?: GoogleFontFamily[] | undefined | null,
   options: GoogleFontOptions = defaultOptions,
 ): UseGoogleFontsResult {
   const [status, setStatus] = useState(GoogleFontsStatus.LOADING);
   const [error, setError] = useState<Error>();
 
-  const href = fonts && options.display ? assembleCommon(fonts, options.display) : undefined;
+  const href = fonts && fonts.length > 0 && options.display ? assembleCommon(fonts, options.display) : undefined;
 
   useEffect(() => {
     if (!href) return;
@@ -89,7 +89,7 @@ export function useGoogleFonts(
     document.head.appendChild(link);
 
     // TODO: what if deps changes and the previous promise resolves?
-    const promises = fonts.map((font) => new FontFaceObserver(font.family).load());
+    const promises = fonts!.map((font) => new FontFaceObserver(font.family).load());
     Promise.all(promises)
       .then(() => {
         setError(undefined);

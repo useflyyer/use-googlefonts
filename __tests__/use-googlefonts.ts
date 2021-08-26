@@ -26,15 +26,21 @@ describe("useGoogleFonts", () => {
     expect(result.current.href).toEqual("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300&display=swap");
   });
 
-  it("composes valid Google Font URL with empty input", async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useGoogleFonts([]));
-    await waitForNextUpdate();
-    expect(result.current.href).toEqual("https://fonts.googleapis.com/css2?display=swap");
+  it("composes empty href for empty array of fonts", async () => {
+    const { result } = renderHook(() => useGoogleFonts([]));
+    // await waitForNextUpdate(); // Not required here.
+    expect(result.current.href).toBeUndefined();
   });
 
-  it("composes valid Google Font URL with undefined input", async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useGoogleFonts(undefined));
-    await waitForNextUpdate();
-    expect(result.current.href).toEqual("https://fonts.googleapis.com/css2?display=swap");
+  it("composes empty href for undefined input", async () => {
+    const { result } = renderHook(() => useGoogleFonts(undefined));
+    // await waitForNextUpdate(); // Not required here.
+    expect(result.current.href).toBeUndefined();
+  });
+
+  it("composes empty href for null input", async () => {
+    const { result } = renderHook(() => useGoogleFonts(null as any));
+    // await waitForNextUpdate(); // Not required here.
+    expect(result.current.href).toBeUndefined();
   });
 });
